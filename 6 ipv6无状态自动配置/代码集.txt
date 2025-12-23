@@ -1,0 +1,60 @@
+un in en
+user-interface console 0
+idle-timeout 0
+
+dis cur
+dis ipv6 int g0/0/0
+
+ipv6                   //系统视图下开启IPv6功能。
+int g0/0/0
+ipv6 en
+
+ipv6 address 2022:120::12:12 64  (vlan20)
+ipv6 address auto link-local
+
+
+ipv6 route-static :: 0 2022:120::12:1
+
+
+int loopback 1
+ipv6 enable
+ipv6 address 2022:130::1 64   
+ipv6 address auto link-local
+
+ipv6
+vlan 10
+int g0/0/2
+port link-type access
+port default vlan 10
+int vlan 10
+ipv6 en
+ipv6 address 2022:110::12:2 64
+undo ipv6 nd ra halt
+
+vlan 20
+int g0/0/1
+port link-type access
+port default vlan 20
+int vlan 20
+ipv6 en
+ipv6 address 2022:120::12:1 64
+
+ipv6 route-static 2022:130:: 64 2022:120::12:12
+
+ipv
+int g0/0/0
+ipv6 en
+ipv6 address auto link-local   //开启链路本地单播地址单播获取
+ipv6 address auto global default  //设置接口的ipv6地址配置方式为global(无状态获取)
+dis ipv6 int g0/0/0
+
+
+ping ipv6 2022:130::1
+
+
+netsh interface ipv6 set global randomizeidentifiers=disabled 
+答：可以实现。
+答：不能。因为无状态自动配置SLAAC是需要IPv6链路本地通告实现的，而中间交换机不支持IPv6协议，则无法转发IPv6链路本地通告消息，无法实现配置功能。
+答：使用DHCPv6或SLAAC。本实验中使用无状态配置，RA消息中包含了vlanif10的IPv6全局单播地址前缀信息，网卡在接收到这个信息后，就可以根据前缀信息再加上自己网卡的标识符构成IPv6全局单播地址，就这样，获得了三层交换机下发的ipv6全球单播地址。
+
+

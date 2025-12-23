@@ -1,0 +1,58 @@
+un in en
+user-interface console 0
+idle-timeout 0
+
+dis cur
+dis ipv6 int g0/0/0
+
+ipv6                   //系统视图下开启IPv6功能。
+int g0/0/0
+ipv6 en
+
+ipv6 address 2022:120::33:10 64  (vlan20)
+ipv6 address auto link-local
+
+
+ipv6 route-static :: 0 2022:120::33:1
+
+
+int loopback 1
+ipv6 enable
+ipv6 address 2022:130::1 64   
+ipv6 address auto link-local
+
+ipv6
+vlan 10
+int g0/0/2
+port link-type access
+port default vlan 10
+int vlan 10
+ipv6 en
+ipv6 address 2022:110::33:2 64
+undo ipv6 nd ra halt
+
+vlan 20
+int g0/0/1
+port link-type access
+port default vlan 20
+int vlan 20
+ipv6 en
+ipv6 address 2022:120::33:1 64
+
+ipv6 route-static 2022:130:: 64 2022:120::33:10
+
+ipv
+int g0/0/0
+ipv6 en
+ipv6 address auto link-local   //开启链路本地单播地址单播获取
+ipv6 address auto global default  //设置接口的ipv6地址配置方式为global(无状态获取)
+dis ipv6 int g0/0/0
+
+
+ping ipv6 2022:130::1
+
+答：可以实现。
+答：不能。因为无状态自动配置是基于IPv6链路本地通告实现的，而中间交换机不支持IPv6协议，则无法转发IPv6链路本地通告消息。
+答：需要使用DHCPv6或SLAAC（v6）版本。
+
+

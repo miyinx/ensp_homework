@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UNICODE" ?>
+<topo version="1.3.00.100">
+    <devices>
+        <dev id="5AE5E628-DC62-49c1-9303-71CF2A826B39" name="hxf_1" poe="0" model="AR1220" settings="" system_mac="00-E0-FC-F1-27-F3" com_port="2000" bootmode="0" cx="124.000000" cy="209.000000" edit_left="151" edit_top="263">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="2" />
+                <interface sztype="Ethernet" interfacename="Ethernet" count="8" />
+            </slot>
+        </dev>
+        <dev id="054A9157-8EAE-45f4-A54A-FB8792FCE758" name="HXF" poe="0" model="S5700" settings="" system_mac="4C-1F-CC-A5-76-09" com_port="2002" bootmode="0" cx="548.000000" cy="203.000000" edit_left="575" edit_top="257">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="24" />
+            </slot>
+        </dev>
+        <dev id="C9A15480-3402-4e5a-8E2C-BE69F59AB913" name="hxf_2" poe="0" model="AR1220" settings="" system_mac="00-E0-FC-D2-4C-7B" com_port="2001" bootmode="0" cx="1021.000000" cy="204.000000" edit_left="1048" edit_top="258">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="2" />
+                <interface sztype="Ethernet" interfacename="Ethernet" count="8" />
+            </slot>
+        </dev>
+    </devices>
+    <lines>
+        <line srcDeviceID="5AE5E628-DC62-49c1-9303-71CF2A826B39" destDeviceID="054A9157-8EAE-45f4-A54A-FB8792FCE758">
+            <interfacePair lineName="Copper" srcIndex="0" srcBoundRectIsMoved="0" srcBoundRect_X="194.179443" srcBoundRect_Y="235.388977" srcOffset_X="0.000000" srcOffset_Y="0.000000" tarIndex="0" tarBoundRectIsMoved="1" tarBoundRect_X="531.820557" tarBoundRect_Y="230.611023" tarOffset_X="-42.000000" tarOffset_Y="11.000000" />
+        </line>
+        <line srcDeviceID="054A9157-8EAE-45f4-A54A-FB8792FCE758" destDeviceID="C9A15480-3402-4e5a-8E2C-BE69F59AB913">
+            <interfacePair lineName="Copper" srcIndex="1" srcBoundRectIsMoved="1" srcBoundRect_X="618.183655" srcBoundRect_Y="230.091293" srcOffset_X="-15.000000" srcOffset_Y="11.000000" tarIndex="0" tarBoundRectIsMoved="1" tarBoundRect_X="1004.816345" tarBoundRect_Y="230.908707" tarOffset_X="-36.000000" tarOffset_Y="9.000000" />
+        </line>
+    </lines>
+    <shapes />
+    <txttips>
+        <txttip left="22" top="137" right="159" bottom="197" content="vlan10&#x0D;&#x0A;loo1&#x0D;&#x0A;2022:130::1 64" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="188" top="184" right="363" bottom="225" content="vlan20&#x0D;&#x0A;2022:120::21:10 64" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="394" top="142" right="560" bottom="183" content="vlanif20&#x0D;&#x0A;2022:120::21:1 64" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="596" top="143" right="762" bottom="184" content="vlanif10&#x0D;&#x0A;2022:110::21:2 64" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="447" top="91" right="726" bottom="112" content="三层交换机开启 无状态自动配置" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="940" top="197" right="1021" bottom="218" content="自动配置" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="921" top="287" right="1096" bottom="367" content="实验配置后g0口应为&#x0D;&#x0A;vlan10&#x0D;&#x0A;2022:110:xxxx&#x0D;&#x0A;遵循eui-64" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+    </txttips>
+</topo>
