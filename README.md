@@ -14,3 +14,20 @@
 6 ipv6无状态自动配置
 
 7 dns搭建与报文分析
+
+[Huawei]un in en
+
+
+[hxf_1]info-center source ds channel 0 log state off trap state off
+
+
+            也可以用undo info enable 即un in en
+
+
+[hxf_1]user-interface console 0
+
+[hxf_1-ui-console0]idle-timeout 0 不会自动退出sys
+
+
+reset arp dynamic
+reset arp all
